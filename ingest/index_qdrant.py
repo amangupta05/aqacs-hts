@@ -1,7 +1,11 @@
-import os, glob, uuid, argparse
+import os
+# import glob
+import uuid
+import argparse
 from pathlib import Path
 import pandas as pd
-from qdrant_client import QdrantClient, models
+from qdrant_client import QdrantClient
+from qdrant_client import models
 from sentence_transformers import SentenceTransformer
 
 BATCH_SIZE = int(os.getenv("QDRANT_INDEX_BATCH", "512"))
@@ -10,7 +14,8 @@ def row_to_text(row: pd.Series, chapter: str) -> str:
     parts = [f"chapter: {chapter}"]
     for k, v in row.items():
         v = "" if pd.isna(v) else str(v)
-        if v: parts.append(f"{k}: {v}")
+        if v: 
+            parts.append(f"{k}: {v}")
     return " | ".join(parts)
 
 def iter_rows(csv_path: Path, chapter: str):
@@ -34,6 +39,7 @@ def main(snapshot: str, root: str, qdrant_url: str):
 
     client = QdrantClient(url=qdrant_url, timeout=60.0)
     model = SentenceTransformer("intfloat/e5-base-v2")
+    # model = SentenceTransformer("intfloat/e5-base-v2", device="cpu")
     ensure_collection(client, collection, model.get_sentence_embedding_dimension())
 
     texts, ids, payloads = [], [], []
@@ -51,6 +57,7 @@ def main(snapshot: str, root: str, qdrant_url: str):
             })
             if len(texts) >= BATCH_SIZE:
                 vecs = model.encode(texts, normalize_embeddings=True, batch_size=256, show_progress_bar=True)
+                # vecs = model.encode(texts, normalize_embeddings=True, batch_size=16, show_progress_bar=True)
                 client.upsert(collection, models.Batch(ids=ids, vectors=vecs, payloads=payloads))
                 texts, ids, payloads = [], [], []
     if texts:

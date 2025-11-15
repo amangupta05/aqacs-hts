@@ -6,4 +6,5 @@ snapshots/
 .env.example
 .qdrant/
 qdrant_ntfs_backup/
+aqacs-hts
 .DS_Store

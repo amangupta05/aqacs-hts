@@ -6,7 +6,8 @@ SECTIONS = [
     (95,95,"XIX"),(96,96,"XX"),(97,97,"XXI"),(98,99,"XXII")
 ]
 def chapter_to_section(ch: int|None) -> str|None:
-    if ch is None: return None
+    if ch is None: 
+        return None
     for lo, hi, sec in SECTIONS:
         if lo <= int(ch) <= hi:
             return sec

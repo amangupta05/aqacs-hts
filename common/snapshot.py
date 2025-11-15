@@ -1,4 +1,5 @@
-import json, os
+import json
+import os
 from pathlib import Path
 
 ACTIVE = os.getenv("ACTIVE_VERSION_FILE","./snapshots/active_version.json")
