@@ -4,6 +4,7 @@ from pathlib import Path
 
 # from qdrant_client import QdrantClient, models
 from qdrant_client import QdrantClient
+from qdrant_client import models
 from sentence_transformers import SentenceTransformer
 
 

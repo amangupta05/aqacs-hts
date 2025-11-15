@@ -1,10 +1,11 @@
 import os
-import glob
+# import glob
 import uuid
 import argparse
 from pathlib import Path
 import pandas as pd
-from qdrant_client import QdrantClient, models
+from qdrant_client import QdrantClient
+from qdrant_client import models
 from sentence_transformers import SentenceTransformer
 
 BATCH_SIZE = int(os.getenv("QDRANT_INDEX_BATCH", "512"))

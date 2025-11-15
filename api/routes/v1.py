@@ -7,7 +7,8 @@ from common.snapshot import active_snapshot_id
 from common.sections import chapter_to_section
 from common.store import Store
 import os
-from qdrant_client import QdrantClient, models
+# from qdrant_client import QdrantClient, models
+from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 from transformers import pipeline
 

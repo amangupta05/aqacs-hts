@@ -1,6 +1,6 @@
 import argparse
 import os
-import csv
+# import csv
 import hashlib
 import json
 from pathlib import Path
@@ -25,7 +25,7 @@ def chapter_ranges():
 
 def main(snapshot_id: str, root: str):
     base = Path(root)/"us"/"hts"/snapshot_id
-    csv_dir = base/"csv"; 
+    csv_dir = base/"csv"
     csv_dir.mkdir(parents=True, exist_ok=True)
     manifest = []
     for fr, to in chapter_ranges():

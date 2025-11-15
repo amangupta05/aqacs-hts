@@ -1,5 +1,5 @@
 import os
-import pytest
+# import pytest
 from qdrant_client import QdrantClient
 
 def test_collection_exists():
