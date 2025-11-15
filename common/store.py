@@ -1,4 +1,6 @@
-import csv, os, glob
+import csv
+import os
+import glob
 from pathlib import Path
 from rapidfuzz import fuzz, process
 

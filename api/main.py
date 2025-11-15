@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Query
+# from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from datetime import datetime
 from api.routes import v1 

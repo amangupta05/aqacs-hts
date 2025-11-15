@@ -1,4 +1,7 @@
-import os, glob, uuid, argparse
+import os
+import glob
+import uuid
+import argparse
 from pathlib import Path
 import pandas as pd
 from qdrant_client import QdrantClient, models
@@ -10,7 +13,8 @@ def row_to_text(row: pd.Series, chapter: str) -> str:
     parts = [f"chapter: {chapter}"]
     for k, v in row.items():
         v = "" if pd.isna(v) else str(v)
-        if v: parts.append(f"{k}: {v}")
+        if v: 
+            parts.append(f"{k}: {v}")
     return " | ".join(parts)
 
 def iter_rows(csv_path: Path, chapter: str):

@@ -2,7 +2,8 @@ import argparse
 import json
 from pathlib import Path
 
-from qdrant_client import QdrantClient, models
+# from qdrant_client import QdrantClient, models
+from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
 
@@ -55,6 +56,7 @@ def main():
 
     if not manifest_path.exists():
         raise FileNotFoundError(f"Manifest not found: {manifest_path}")
+
 
     default_collection_name = f"us_ecfr_{snapshot_label}"
     collection_name = args.collection or default_collection_name
